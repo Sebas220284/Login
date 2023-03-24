@@ -38,15 +38,15 @@
         <div class="col-md-6 mb-3">
             <div class="card">
                 <div class="card-header">
-                    <h5 class="text-center">Alta producto</h5>
+                    <h5 class="text-center">PACIENTES</h5>
                 </div>
                 <div class="card-body">
                     <form action="/products" method="POST">
                         <label>Nombre</label>
                         <input type="text" class="form-control mb-3" name="name">
-                        <label>Precio</label>
+                        <label>Apellido</label>
                         <input type="text" class="form-control mb-3" name="price">
-                        <label>Cantidad</label>
+                        <label>Edad</label>
                         <input type="text" class="form-control mb-3" name="quantity">
                         <button class="btn btn-primary" type="submit">Guardar</button>
                     </form>
@@ -57,7 +57,7 @@
         <div class="col-md-6">
             <div class="card">
                 <div class="card-header">
-                    <h5 class="text-center">Productos</h5>
+                    <h5 class="text-center">PACIENTE REGISTRADO</h5>
                 </div>
                 <div class="card-body">
                     <ul class="list-group">
@@ -67,12 +67,13 @@
                                 <div class="col">
                                     <li class="list-group-item mb-3">
                                         <form action="/edit/{{product.name}}" method="POST">
+                                            <small>Nombre</small>
                                             <input type="text" class="form-control" value="{{product.name}}" name="name">
-                                            <small>CANTIDAD</small>
+                                            <small>Apellido</small>
                                             <input type="text" class="form-control" value="{{product.quantity}}" name="quantity">
-                                            <small>PRECIO</small>
+                                            <small>Edad</small>
                                             <input type="text" class="form-control" value="{{product.price}}" name="price">
-                                            <button class="btn btn-primary btn-sm mt-3" type="submit">Editar</button>
+                                            <button class="btn btn-primary btn-sm mt-3" type="submit">Editar y guardar</button>
                                             <a href="{{url_for('delete', product_name=product.name)}}" class="btn btn-danger btn-sm mt-3">Eliminar</a>
 
                                         </form>
