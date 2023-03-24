@@ -1,7 +1,93 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<h1>Dashboard</h1>
-{{session['logged_in']}}
-{{session['user']}}
+<div class="card-wrapper">
+
+    <div class="card">
+
+      <h1 class="center">Panel de control</h1>
+      <p class="center">Tu informacion ha sido registrada</p>
+
+      <div class="center">
+        <a href="/users/signout" class="btn btn--secondary">Salir</a>
+      </div>
+    
+    </div>
+
+    <div class="card">
+
+      <h2 class="center">INFORMACIOS DEL PACIENTE</h2>
+
+      <p>
+        <strong>ID:</strong> {{ session['user']['_id'] }}<br>
+        <strong>Nombre:</strong> {{ session['user']['name'] }}<br>
+        <strong>Email:</strong> {{ session['user']['email'] }}
+      </p>
+    
+    </div>
+
+  
+  </div>
+
+  <div class="container">
+    <h1 class="text-center mt-5 mb-5">APP API-REST PYTHON - FLASK - MONGODB</h1>
+</div>
+
+<div class="container">
+    <div class="row row-col-1 row-cols-sm-1 row-cols-md-2 row-cols-lg-2">
+        <div class="col-md-6 mb-3">
+            <div class="card">
+                <div class="card-header">
+                    <h5 class="text-center">Alta producto</h5>
+                </div>
+                <div class="card-body">
+                    <form action="/products" method="POST">
+                        <label>Nombre</label>
+                        <input type="text" class="form-control mb-3" name="name">
+                        <label>Precio</label>
+                        <input type="text" class="form-control mb-3" name="price">
+                        <label>Cantidad</label>
+                        <input type="text" class="form-control mb-3" name="quantity">
+                        <button class="btn btn-primary" type="submit">Guardar</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header">
+                    <h5 class="text-center">Productos</h5>
+                </div>
+                <div class="card-body">
+                    <ul class="list-group">
+                        <div class="row row-col-2 row-cols-sm-2 row-cols-md-3 row-cols-lg-3">
+                            {% for product in products %}
+
+                                <div class="col">
+                                    <li class="list-group-item mb-3">
+                                        <form action="/edit/{{product.name}}" method="POST">
+                                            <input type="text" class="form-control" value="{{product.name}}" name="name">
+                                            <small>CANTIDAD</small>
+                                            <input type="text" class="form-control" value="{{product.quantity}}" name="quantity">
+                                            <small>PRECIO</small>
+                                            <input type="text" class="form-control" value="{{product.price}}" name="price">
+                                            <button class="btn btn-primary btn-sm mt-3" type="submit">Editar</button>
+                                            <a href="{{url_for('delete', product_name=product.name)}}" class="btn btn-danger btn-sm mt-3">Eliminar</a>
+
+                                        </form>
+                                    </li>
+                                </div>
+
+                            {% endfor %}
+                        </div>
+                    </ul>
+                </div> 
+            </div>
+        </div>
+    </div>
+</div>
+
+
+</div>
 {% endblock %}

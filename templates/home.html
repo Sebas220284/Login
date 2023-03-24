@@ -1,9 +1,14 @@
+
+
+
 {% extends "base.html" %}
 
 {% block content %}
+
    <div class="card-wrapper">
     <div class="card">
         <h1 class="center">Crear una cuenta</h1>
+        
         <form name="signup_form">
 
         <label for="name">Nombre</label>
@@ -12,14 +17,40 @@
         <label for="email">Email</label>
         <input type="text" name="email" class="field" required>
 
+        <label for="telefono">Telefono</label>
+        <input type="number" name="telefono" class="field" required>
+
         <label for="password">Contraseña</label>
         <input type="password" name="password" class="field" required>
         <p class="error error-hidden"></p>
         <input type="submit" value="Enviar" class="btn">
+
+        
        
        
     </form>
     </div>
+    <div class="card">
+
+        <h1 class="center">Log In</h1>
+  
+        <form name="login_form">
+  
+          <label for="email">Email</label>
+          <input type="email" name="email" class="field" required>
+  
+          <label for="password">Password</label>
+          <input type="password" name="password" class="field" required>
+  
+          <p class="error error--hidden"></p>
+  
+          <input type="submit" value="Log In" class="btn">
+        
+        </form>
+        
+      </div>
+    
    </div>
    
 {% endblock content %}
+
